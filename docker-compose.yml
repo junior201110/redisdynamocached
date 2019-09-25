@@ -1,0 +1,16 @@
+version: "3.2"
+
+services:
+  redis:
+    image: redis
+    command: redis-server
+    ports:
+      - "6379:6379"
+    restart: always
+  dynamo:
+    image: "cnadiminti/dynamodb-local"
+    volumes:
+      - ./.data/dynamodb:/dynamodb_local_db
+    ports:
+      - "8000:8000"
+    restart: always
